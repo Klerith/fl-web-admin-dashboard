@@ -16,8 +16,22 @@ class AuthProvider extends ChangeNotifier {
     
     // TODO: Navegar al dashboard
     
-    
     notifyListeners();
+  }
+
+  Future<bool> isAuthenticated() async {
+
+    final token = LocalStorage.prefs.getString('token');
+
+    if( token == null ) {
+      return false;
+    }
+
+    // TODO: ir al backend y comprobar si el JWT es válido
+    
+    await Future.delayed(Duration(milliseconds: 1000 ));
+
+    return true;
   }
 
 
