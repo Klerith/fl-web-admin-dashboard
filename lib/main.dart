@@ -22,7 +22,10 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ( _ ) => AuthProvider() ),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: ( _ ) => AuthProvider()
+        ),
       ],
       child: MyApp(),
     );
@@ -41,10 +44,17 @@ class MyApp extends StatelessWidget {
       navigatorKey: NavigationService.navigatorKey,
       builder: ( _ , child ){
         
-        // print( LocalStorage.prefs.getString('token') );
+        final authProvider = Provider.of<AuthProvider>(context);
 
-        // return AuthLayout( child: child! );
-        return DashboardLayout( child: child! );
+        if ( authProvider.authStatus == AuthStatus.checking )
+          return Center( child: Text('checking') );
+
+        if( authProvider.authStatus == AuthStatus.authenticated ) {
+          return DashboardLayout( child: child! );
+        } else {
+          return AuthLayout( child: child! );
+        }
+              
 
       },
       theme: ThemeData.light().copyWith(
