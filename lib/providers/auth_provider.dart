@@ -26,8 +26,7 @@ class AuthProvider extends ChangeNotifier {
     this._token = 'adjkfhadfyiu12y3hjasd.ajskhdaks.kjshdkjas';
     LocalStorage.prefs.setString('token', this._token! );
     
-    // TODO: Navegar al dashboard
-    
+    authStatus = AuthStatus.authenticated;
     notifyListeners();
   }
 

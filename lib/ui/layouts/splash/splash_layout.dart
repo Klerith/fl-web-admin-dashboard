@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DashboardLayout extends StatelessWidget {
-
-  final Widget child;
-
-  const DashboardLayout({
-    Key? key, 
-    required this.child
-  }) : super(key: key);
-
-
-
+class SplashLayout extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +9,9 @@ class DashboardLayout extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Dashboard', style: TextStyle( fontSize: 50 )),
-            Expanded(child: child)
+            CircularProgressIndicator(),
+            SizedBox( height: 20 ),
+            Text('Checking...')
           ],
         ),
       ),
