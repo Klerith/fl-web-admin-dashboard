@@ -52,6 +52,7 @@ class _MobileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 1000,
       color: Colors.black,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -95,12 +96,13 @@ class _DesktopBody extends StatelessWidget {
     return Container(
       width: size.width,
       height: size.height * 0.95,
-      color: Colors.red,
+      color: Colors.black,
       child: Row(
         children: [
 
           // Twitter Background
-          BackgroundTwitter(),
+          Expanded(child: BackgroundTwitter()),
+          
 
           // View Container
           Container(

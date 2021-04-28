@@ -24,8 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  email_validator: ^2.0.1
   fluro: ^2.0.3
   google_fonts: ^2.0.0
+  provider: ^5.0.0
+  shared_preferences: ^2.0.5
 
 dev_dependencies:
   flutter_test:
