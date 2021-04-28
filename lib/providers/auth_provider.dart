@@ -26,8 +26,9 @@ class AuthProvider extends ChangeNotifier {
     this._token = 'adjkfhadfyiu12y3hjasd.ajskhdaks.kjshdkjas';
     LocalStorage.prefs.setString('token', this._token! );
     
-    authStatus = AuthStatus.authenticated;
-    notifyListeners();
+    // authStatus = AuthStatus.authenticated;
+    // notifyListeners();
+    isAuthenticated();
   }
 
   Future<bool> isAuthenticated() async {
