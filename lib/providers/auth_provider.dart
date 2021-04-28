@@ -1,6 +1,8 @@
 
 
+import 'package:admin_dashboard/router/router.dart';
 import 'package:admin_dashboard/services/local_storage.dart';
+import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 
 enum AuthStatus {
@@ -26,9 +28,10 @@ class AuthProvider extends ChangeNotifier {
     this._token = 'adjkfhadfyiu12y3hjasd.ajskhdaks.kjshdkjas';
     LocalStorage.prefs.setString('token', this._token! );
     
-    // authStatus = AuthStatus.authenticated;
-    // notifyListeners();
-    isAuthenticated();
+    authStatus = AuthStatus.authenticated;
+    notifyListeners();
+    
+    NavigationService.replaceTo(Flurorouter.dashboardRoute);
   }
 
   Future<bool> isAuthenticated() async {
