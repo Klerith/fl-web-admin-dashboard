@@ -16,8 +16,8 @@ class BlankView extends StatelessWidget {
           SizedBox( height: 10 ),
 
           WhiteCard(
-            title: 'Sales Statistics',
-            child: Text('Hola Mundo')
+            title: 'Blank Page',
+            child: Text('Hola Mundo!!')
           )
 
         ],
