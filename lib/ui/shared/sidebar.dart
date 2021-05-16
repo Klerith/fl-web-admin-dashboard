@@ -49,7 +49,14 @@ class Sidebar extends StatelessWidget {
 
           MenuItem( text: 'Orders', icon: Icons.shopping_cart_outlined, onPressed: (){}),
           MenuItem( text: 'Analytic', icon: Icons.show_chart_outlined, onPressed: (){}),
-          MenuItem( text: 'Categories', icon: Icons.layers_outlined, onPressed: (){}),
+          
+          MenuItem(
+            text: 'Categories', 
+            icon: Icons.layers_outlined, 
+            onPressed: () => navigateTo( Flurorouter.categoriesRoute ),
+            isActive: sideMenuProvider.currentPage == Flurorouter.categoriesRoute,
+          ),
+
           MenuItem( text: 'Products', icon: Icons.dashboard_outlined, onPressed: (){}),
           MenuItem( text: 'Discount', icon: Icons.attach_money_outlined, onPressed: (){}),
           MenuItem( text: 'Customers', icon: Icons.people_alt_outlined, onPressed: (){}),
