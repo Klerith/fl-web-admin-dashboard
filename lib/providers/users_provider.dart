@@ -11,6 +11,7 @@ class UsersProvider extends ChangeNotifier {
   List<Usuario> users = [];
   bool isLoading = true;
   bool ascending = true;
+  int? sortColumnIndex;
   
   UsersProvider() {
     this.getPaginatedUsers();
@@ -21,14 +22,22 @@ class UsersProvider extends ChangeNotifier {
     
     final resp = await CafeApi.httpGet('/usuarios?limite=100&desde=0');
     final usersResp = UsersResponse.fromMap(resp);
-
     this.users = [ ... usersResp.usuarios ];
-
     isLoading = false;
-
-
     notifyListeners();
+  }
 
+  Future<Usuario> getUserById( String uid ) async {
+    
+    try {
+      final resp = await CafeApi.httpGet('/usuarios/$uid');
+      final user = Usuario.fromMap(resp);
+      return user;
+      
+    } catch (e) {
+      print(e);
+      throw e;
+    }
   }
 
 
@@ -48,6 +57,23 @@ class UsersProvider extends ChangeNotifier {
 
     notifyListeners();
 
+  }
+
+
+  void refreshUser( Usuario newUser ) {
+
+    this.users = this.users.map(
+      (user){
+        if ( user.uid == newUser.uid ) {
+          user = newUser;
+        }
+
+        return user;
+      }
+    ).toList();
+
+
+    notifyListeners();
   }
 
 }
