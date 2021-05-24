@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/models/usuario.dart';
 import 'package:admin_dashboard/providers/user_form_provider.dart';
 import 'package:admin_dashboard/providers/users_provider.dart';
+import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:admin_dashboard/services/notifications_service.dart';
 import 'package:admin_dashboard/ui/inputs/custom_inputs.dart';
 import 'package:email_validator/email_validator.dart';
@@ -37,13 +38,24 @@ class _UserViewState extends State<UserView> {
     usersProvider.getUserById(widget.uid)
       .then((userDB) {
         
-        userFormProvider.user = userDB;
-        setState((){ this.user = userDB; });
+        if ( userDB != null ) {
+          userFormProvider.user = userDB;
+          setState((){ this.user = userDB; });
+        } else {
+          NavigationService.replaceTo('/dashboard/users');
+        }
 
       }
     );
     
   }
+
+  @override
+  void dispose() { 
+    Provider.of<UserFormProvider>(context, listen: false).user = null;
+    super.dispose();
+  }
+  
 
 
   @override
