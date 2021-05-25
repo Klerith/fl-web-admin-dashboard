@@ -8,11 +8,9 @@ import 'package:admin_dashboard/ui/layouts/splash/splash_layout.dart';
 
 import 'package:admin_dashboard/router/router.dart';
 
-import 'package:admin_dashboard/providers/auth_provider.dart';
-import 'package:admin_dashboard/providers/categories_provider.dart';
-import 'package:admin_dashboard/providers/users_provider.dart';
-import 'package:admin_dashboard/providers/user_form_provider.dart';
-import 'package:admin_dashboard/providers/sidemenu_provider.dart';
+
+import 'package:admin_dashboard/providers/providers.dart';
+
 
 import 'package:admin_dashboard/services/local_storage.dart';
 import 'package:admin_dashboard/services/navigation_service.dart';
