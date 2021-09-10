@@ -80,6 +80,11 @@ class Sidebar extends StatelessWidget {
             text: 'Logout', 
             icon: Icons.exit_to_app_outlined, 
             onPressed: (){
+              
+              SideMenuProvider.isOpen = false;
+              SideMenuProvider.menuController.reset();
+              // NavigationService.navigateTo( Flurorouter.loginRoute );
+
               Provider.of<AuthProvider>(context, listen: false)
                 .logout();
             }),

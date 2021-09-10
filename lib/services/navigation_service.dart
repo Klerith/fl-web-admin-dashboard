@@ -15,4 +15,8 @@ class NavigationService {
     return navigatorKey.currentState!.pushReplacementNamed( routeName );
   }
 
+  static pushRefresh( String routeName ) {
+    return navigatorKey.currentState!.popAndPushNamed(routeName);
+  }
+
 }

@@ -18,8 +18,8 @@ class SideMenuProvider extends ChangeNotifier {
     });
   }
 
-
-
+  // FIXME: 
+  //! Tengo que reinicializar el menu controller aquí 
   static Animation<double> movement = Tween<double>( begin: -200, end: 0 )
     .animate( CurvedAnimation(parent: menuController, curve: Curves.easeInOut ) );
 
@@ -28,8 +28,15 @@ class SideMenuProvider extends ChangeNotifier {
 
 
   static void openMenu() {
+    
     isOpen = true;
+    menuController.reset();
     menuController.forward();
+
+    print('menucontroller is playing ${  menuController.isAnimating } ');
+    Future.delayed(Duration(milliseconds: 150 )).then((value){
+      print('menucontroller is playing milli ${  menuController.isAnimating } ');
+    });
   }
 
   static void closeMenu() {

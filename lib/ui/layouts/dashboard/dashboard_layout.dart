@@ -29,7 +29,21 @@ class _DashboardLayoutState extends State<DashboardLayout> with SingleTickerProv
       duration: Duration(milliseconds: 300) 
     );
 
+
+    SideMenuProvider.movement = Tween<double>( begin: -200, end: 0 )
+      .animate( CurvedAnimation(parent: SideMenuProvider.menuController, curve: Curves.easeInOut ) );
+
+    SideMenuProvider.opacity = Tween<double>( begin: 0, end: 1 )
+      .animate( CurvedAnimation(parent: SideMenuProvider.menuController, curve: Curves.easeInOut ) );
+
   }
+
+  @override
+  void dispose() {
+    SideMenuProvider.menuController.dispose();
+    super.dispose();
+  }
+  
 
 
   @override
@@ -70,9 +84,12 @@ class _DashboardLayoutState extends State<DashboardLayout> with SingleTickerProv
 
           if( size.width < 700 )
             AnimatedBuilder(
+
               animation: SideMenuProvider.menuController, 
               builder: ( context, _ ) => Stack(
                 children: [
+
+                  Text('HOLA MUNDO!, ${ SideMenuProvider.movement.value }'),
 
                   if( SideMenuProvider.isOpen )
                     Opacity(
