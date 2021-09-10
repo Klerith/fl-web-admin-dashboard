@@ -89,8 +89,6 @@ class _DashboardLayoutState extends State<DashboardLayout> with SingleTickerProv
               builder: ( context, _ ) => Stack(
                 children: [
 
-                  Text('HOLA MUNDO!, ${ SideMenuProvider.movement.value }'),
-
                   if( SideMenuProvider.isOpen )
                     Opacity(
                       opacity: SideMenuProvider.opacity.value,
